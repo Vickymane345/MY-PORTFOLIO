@@ -1,31 +1,11 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import type { NextConfig } from "next";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const LOADER = path.resolve(__dirname, "src/visual-edits/component-tagger-loader.js");
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**",
-      },
-      {
-        protocol: "http",
-        hostname: "**",
-      },
+      { protocol: "https", hostname: "**" },
+      { protocol: "http", hostname: "**" },
     ],
-  },
-  outputFileTracingRoot: path.resolve(__dirname, "../../"),
-  turbopack: {
-    rules: {
-      "*.{jsx,tsx}": {
-        loaders: [LOADER],
-      },
-    },
   },
 };
 
